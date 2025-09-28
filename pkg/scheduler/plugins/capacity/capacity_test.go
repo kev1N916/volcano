@@ -586,6 +586,7 @@ func TestEnqueueAndAllocatable(t *testing.T) {
 	res0c1g := api.BuildResourceList("0", "1G")
 	res1c1g := api.BuildResourceList("1", "1G")
 	// pod
+
 	p1 := util.MakePod().
 		Namespace("ns1").
 		Name("pod1").
@@ -647,7 +648,7 @@ func TestEnqueueAndAllocatable(t *testing.T) {
 		NodeSelector(nil).
 		Obj()
 		// podgroup
-	
+
 	pg1 := util.MakePodGroup().
 		Name("pg1").
 		Namespace("ns1").
@@ -1074,7 +1075,6 @@ func Test_capacityPlugin_OnSessionOpenWithHierarchy(t *testing.T) {
 	queue8 := util.MakeQueue().Name("q8").State(schedulingv1beta1.QueueStateOpen).Parent("root").Deserved(api.BuildResourceList("2", "2Gi", []api.ScalarResource{{Name: "nvidia.com/gpu", Value: "8"}}...)).Capability(nil).Weight(1).Obj()
 	queue81 := util.MakeQueue().Name("q81").State(schedulingv1beta1.QueueStateOpen).Parent("q8").Deserved(api.BuildResourceList("2", "2Gi", []api.ScalarResource{{Name: "nvidia.com/gpu", Value: "4"}}...)).Capability(nil).Weight(1).Obj()
 	queue82 := util.MakeQueue().Name("q81").State(schedulingv1beta1.QueueStateOpen).Parent("q8").Deserved(api.BuildResourceList("2", "2Gi", []api.ScalarResource{{Name: "nvidia.com/gpu", Value: "4"}}...)).Capability(nil).Weight(1).Obj()
-	// ISNT THIS A MISTAKE
 
 	// node
 	gpuNode := util.MakeNode().
